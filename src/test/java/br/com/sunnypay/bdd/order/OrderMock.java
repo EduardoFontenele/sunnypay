@@ -1,4 +1,6 @@
-package br.com.sunnypay.order;
+package br.com.sunnypay.bdd.order;
+
+import br.com.sunnypay.order.OrderRequest;
 
 public final class OrderMock {
     private OrderMock() {}

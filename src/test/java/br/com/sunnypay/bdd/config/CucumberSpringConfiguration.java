@@ -1,4 +1,4 @@
-package br.com.sunnypay.config;
+package br.com.sunnypay.bdd.config;
 
 import br.com.sunnypay.SunnypayApplication;
 import io.cucumber.spring.CucumberContextConfiguration;

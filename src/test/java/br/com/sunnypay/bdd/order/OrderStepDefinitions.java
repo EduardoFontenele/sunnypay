@@ -1,6 +1,6 @@
-package br.com.sunnypay.order;
+package br.com.sunnypay.bdd.order;
 
-import br.com.sunnypay.config.BaseStepDefinitions;
+import br.com.sunnypay.bdd.config.BaseStepDefinitions;
 import br.com.sunnypay.shared.exception.ErrorResponse;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -8,14 +8,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.http.HttpStatus;
 
-import static br.com.sunnypay.order.OrderMock.missingRequiredFields;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderStepDefinitions extends BaseStepDefinitions {
     @Given("the application sends incomplete order data")
     public void given_TheApplicationSendsIncompleteOrderData() {
         clearAll();
-        setRequestBody(missingRequiredFields());
+        setRequestBody(OrderMock.missingRequiredFields());
         setupJsonHeaders();
     }
 

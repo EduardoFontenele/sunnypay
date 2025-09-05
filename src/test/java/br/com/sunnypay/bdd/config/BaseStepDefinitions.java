@@ -1,4 +1,4 @@
-package br.com.sunnypay.config;
+package br.com.sunnypay.bdd.config;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
