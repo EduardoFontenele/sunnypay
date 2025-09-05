@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.springframework.http.HttpStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 public class OrderStepDefinitions extends BaseStepDefinitions {
     @Given("the application sends incomplete order data")
@@ -28,7 +29,7 @@ public class OrderStepDefinitions extends BaseStepDefinitions {
 
     @Then("should respond with status {int}")
     public void then_ShouldRespondWithStatus(int status) {
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value());
+        assertThat(response.getStatusCode()).isEqualTo(status);
     }
 
     @And("should return error response with validation errors")
