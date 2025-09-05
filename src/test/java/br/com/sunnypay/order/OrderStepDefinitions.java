@@ -16,13 +16,14 @@ public class OrderStepDefinitions extends BaseStepDefinitions {
     public void given_TheApplicationSendsIncompleteOrderData() {
         clearAll();
         setRequestBody(missingRequiredFields());
+        setupJsonHeaders();
     }
 
     @When("the application calls method {string} with URI {string}")
     public void when_TheApplicationCallsMethodWithUri(String method, String uri) {
         switch (method) {
-            case "POST" -> executePost(uri);
-            case "GET" -> executeGet(uri);
+            case "POST" -> executePost(uri).then().log().body();
+            case "GET" -> executeGet(uri).then().log().body();
         }
     }
 
