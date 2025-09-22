@@ -1,7 +1,7 @@
 package br.com.sunnypay.unit.order;
 
 import br.com.sunnypay.bdd.order.OrderMock;
-import br.com.sunnypay.order.OrderController;
+import br.com.sunnypay.order.controller.OrderController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

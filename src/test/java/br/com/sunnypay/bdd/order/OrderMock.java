@@ -1,7 +1,10 @@
 package br.com.sunnypay.bdd.order;
 
-import br.com.sunnypay.order.OrderRequest;
-import br.com.sunnypay.order.PaymentMethod;
+import br.com.sunnypay.order.dto.OrderRequest;
+import br.com.sunnypay.order.domain.PaymentMethod;
+import br.com.sunnypay.shared.domain.Customer;
+import br.com.sunnypay.shared.domain.Item;
+import br.com.sunnypay.shared.domain.Phone;
 
 import java.util.List;
 
@@ -40,7 +43,7 @@ public final class OrderMock {
 
     public static OrderRequest withInvalidCustomer() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "",
                         "",
                         "",
@@ -55,7 +58,7 @@ public final class OrderMock {
 
     public static OrderRequest withInvalidEmail() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "John Doe",
                         "invalid-email",
                         "12345678901",
@@ -70,7 +73,7 @@ public final class OrderMock {
 
     public static OrderRequest withInvalidDocument() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "John Doe",
                         "john@example.com",
                         "123",
@@ -85,11 +88,11 @@ public final class OrderMock {
 
     public static OrderRequest withInvalidPhone() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "John Doe",
                         "john@example.com",
                         "12345678901",
-                        List.of(new OrderRequest.CustomerDto.PhoneDto(
+                        List.of(new Phone(
                                 "55",
                                 "1",
                                 "123",
@@ -109,7 +112,7 @@ public final class OrderMock {
                 PaymentMethod.PIX,
                 1000L,
                 "REF123",
-                List.of(new OrderRequest.Item(
+                List.of(new Item(
                         "",
                         0,
                         0L
@@ -129,7 +132,7 @@ public final class OrderMock {
 
     public static OrderRequest withTooManyPhones() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "John Doe",
                         "john@example.com",
                         "12345678901",
@@ -151,7 +154,7 @@ public final class OrderMock {
 
     public static OrderRequest withTooLongCustomerName() {
         return new OrderRequest(
-                new OrderRequest.CustomerDto(
+                new Customer(
                         "A".repeat(256),
                         "john@example.com",
                         "12345678901",
@@ -170,7 +173,7 @@ public final class OrderMock {
                 PaymentMethod.PIX,
                 1000L,
                 "REF123",
-                List.of(new OrderRequest.Item(
+                List.of(new Item(
                         "A".repeat(256),
                         1,
                         1000L
@@ -188,8 +191,8 @@ public final class OrderMock {
         );
     }
 
-    private static OrderRequest.CustomerDto validCustomer() {
-        return new OrderRequest.CustomerDto(
+    private static Customer validCustomer() {
+        return new Customer(
                 "John Doe",
                 "john@example.com",
                 "12345678901",
@@ -197,17 +200,17 @@ public final class OrderMock {
         );
     }
 
-    private static OrderRequest.CustomerDto.PhoneDto validPhone() {
-        return new OrderRequest.CustomerDto.PhoneDto(
+    private static Phone validPhone() {
+        return new Phone(
                 "+55",
                 "11",
                 "999999999",
-                OrderRequest.CustomerDto.PhoneDto.PhoneType.MOBILE
+                Phone.PhoneType.MOBILE
         );
     }
 
-    private static OrderRequest.Item validItem() {
-        return new OrderRequest.Item(
+    private static Item validItem() {
+        return new Item(
                 "Product A",
                 1,
                 1000L

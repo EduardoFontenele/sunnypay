@@ -1,4 +1,4 @@
-package br.com.sunnypay.order;
+package br.com.sunnypay.order.domain;
 
 public enum OrderStatus {
     PENDING,

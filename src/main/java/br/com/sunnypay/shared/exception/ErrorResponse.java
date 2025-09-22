@@ -1,5 +1,6 @@
 package br.com.sunnypay.shared.exception;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 
@@ -10,6 +11,7 @@ public record ErrorResponse(
         String message,
         int status,
         LocalDateTime timestamp,
+        @JsonIgnore
         List<ErrorInformation> errors
 ) {
     public record ErrorInformation(
