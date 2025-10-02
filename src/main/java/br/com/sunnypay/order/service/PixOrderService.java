@@ -3,9 +3,10 @@ package br.com.sunnypay.order.service;
 import br.com.sunnypay.order.domain.Order;
 import br.com.sunnypay.order.dto.OrderResponse;
 import br.com.sunnypay.order.dto.OrderRequest;
+import br.com.sunnypay.order.dto.PaymentInformation;
 import br.com.sunnypay.order.dto.PixOrderResponse;
 import br.com.sunnypay.order.repository.OrderRepository;
-import br.com.sunnypay.payment.domain.ClientPaymentConfig;
+import br.com.sunnypay.payment.domain.CustomerPaymentCredentials;
 import br.com.sunnypay.payment.service.PixPaymentService;
 import br.com.sunnypay.shared.config.BusinessLogicErrorMessages;
 import br.com.sunnypay.shared.domain.Item;
@@ -26,9 +27,7 @@ public class PixOrderService implements OrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public OrderResponse process(OrderRequest orderRequest, ClientPaymentConfig paymentConfig) {
-        log.info("Enviando items de pedido para processamento de pagamento...");
-
+    public OrderResponse process(OrderRequest orderRequest, CustomerPaymentCredentials paymentCredentials) {
         validateRequestAmount(orderRequest.amountInCents(), orderRequest.items());
 
         var savedOrder = orderRepository.save(new Order(
@@ -37,9 +36,8 @@ public class PixOrderService implements OrderService {
                 orderRequest.customer().email()
                 )
         );
-        log.info(savedOrder.getReferenceId().toString());
 
-        var paymentLinks = pixPaymentService.process(orderRequest.amountInCents());
+        var paymentLinks = pixPaymentService.process(new PaymentInformation(orderRequest, paymentCredentials));
 
         return new PixOrderResponse(
                 savedOrder.getReferenceId().toString(),

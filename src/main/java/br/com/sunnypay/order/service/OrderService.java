@@ -2,8 +2,8 @@ package br.com.sunnypay.order.service;
 
 import br.com.sunnypay.order.dto.OrderResponse;
 import br.com.sunnypay.order.dto.OrderRequest;
-import br.com.sunnypay.payment.domain.ClientPaymentConfig;
+import br.com.sunnypay.payment.domain.CustomerPaymentCredentials;
 
 public interface OrderService {
-    OrderResponse process(OrderRequest orderRequest, ClientPaymentConfig paymentConfig);
+    OrderResponse process(OrderRequest orderRequest, CustomerPaymentCredentials paymentCredentials);
 }

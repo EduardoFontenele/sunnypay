@@ -20,12 +20,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "client_payment_config_tb")
+@Table(name = "customer_payment_credentials_tb")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientPaymentConfig {
+public class CustomerPaymentCredentials {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

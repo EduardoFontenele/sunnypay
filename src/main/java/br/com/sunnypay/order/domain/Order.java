@@ -54,6 +54,10 @@ public class Order {
         this.customerEmail = customerEmail;
     }
 
+    public Order() {
+
+    }
+
     @PrePersist
     private void generateReferenceId() {
         if (referenceId == null) {
