@@ -63,7 +63,7 @@ public class PixPaymentService {
         var firstName = nameParts[0];
         var lastName = nameParts.length > 1 ? nameParts[1] : "";
 
-        log.debug("Criando request PIX é isso - Valor: R$ {}, Cliente: {}", amount, customer.email());
+        log.debug("Criando request PIX - Valor: R$ {}, Cliente: {}", amount, customer.email());
 
         return PaymentCreateRequest.builder()
                 .transactionAmount(amount)
