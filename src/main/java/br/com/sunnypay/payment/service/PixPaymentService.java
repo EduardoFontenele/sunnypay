@@ -57,7 +57,7 @@ public class PixPaymentService {
         var customer = order.customer();
 
         var amount = BigDecimal.valueOf(order.amountInCents())
-                .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+                .divide(BigDecimal.valueOf(200), 2, RoundingMode.HALF_UP);
 
         var nameParts = customer.name().trim().split("\\s+", 2);
         var firstName = nameParts[0];
